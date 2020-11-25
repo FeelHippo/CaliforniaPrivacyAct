@@ -1,5 +1,7 @@
-import Storage from './storage';
-import UsprivacyString from './usprivacy-string';
+import "core-js/stable";
+import "regenerator-runtime/runtime";
+import Storage from '../storage/storage';
+import UsprivacyString from '../usprivacy-string';
 const API_VERSION = 1;
 let uspString = new UsprivacyString();
 
@@ -27,10 +29,9 @@ export const getUSPData = (apiver, callback) => {
                 callback(null, false);
             return;
         }
-
         // retrieve data from local storage
-        let consent_string = null;
-        if ((consent_string = Storage.getString('usprivacy'))) {
+        let consent_string = Storage.getString('usprivacy');
+        if (consent_string.length) {
             if (!uspString.setUsprivacyString(consent_string)) {
                 console.log('Warning: consent string not set.');
             }
@@ -59,5 +60,3 @@ export const getUSPData = (apiver, callback) => {
         console.error('__uspapi: callback parameter not a function.')
     }
 };
-
-

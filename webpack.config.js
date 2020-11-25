@@ -15,6 +15,7 @@ const sharedConfig = () => {
             filename: '[name].js',
             path: path.resolve(__dirname, 'dist')
         },
+        devtool: "source-map",
         plugins: [
             new HtmlWebpackPlugin({
                 title: 'Output Management',
@@ -27,7 +28,32 @@ const sharedConfig = () => {
                     removeComments: true
                 }
             })
-        ]
+        ],
+        module: {
+            rules: [
+              {
+                test: /\.js?$/,
+                exclude: /node_modules/,
+                include: [
+                    path.resolve(__dirname, 'src')
+                ],
+                loader: 'babel-loader'
+              },
+              {
+                test: /\.html?$/,
+                include: [
+                    path.resolve(__dirname, 'src')
+                ],
+                use: [{
+                    loader: 'mustache-loader',
+                    options: {
+                        minify: true,
+                        tiny: true
+                    }
+                }]
+              }
+            ]
+        }
     };
 };
 

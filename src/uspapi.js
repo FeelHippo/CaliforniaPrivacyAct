@@ -1,9 +1,12 @@
-import { addFrame, getUSPData } from './layout.js';
+import 'regenerator-runtime/runtime';
+import '@webcomponents/custom-elements';
+import '@webcomponents/template';
+import './services/custom-event';
+import { addFrame, getUSPData } from './layout/layout.js';
+import SibboCMP from './services/sibbo-cmp';
+import loadComponents from './layout/component/index';
 
 let pendingCalls = [];
-
-// add the "__uspapiLocator" frame to the window
-addFrame();
 
 /**
  * U.S. Privacy API implementation
@@ -24,14 +27,16 @@ window.__uspapi = new function (win) {
         }
     }
 
-    let api = cmd => {
+    let api = (cmd, version, callback) => {
         try {
-            return {
-                getUSPData,
-                __uspapi: () => {
-                    return true;
-                }
-            } [cmd].apply(null, [].slice.call(arguments, 1));
+            switch (cmd) {
+                case 'getUSPData':
+                    getUSPData(version, callback);
+                    break;
+            
+                default:
+                    break;
+            };
         } catch (error) {
             console.error('__uspapi: Invalid Command: ', cmd)
         }
@@ -55,5 +60,13 @@ const __handleUspapiMessage = event => {
         })
     }
 }
-
+// react to a call to window.postMessage()
 window.addEventListener('message', __handleUspapiMessage, false);
+
+// add the "__uspapiLocator" frame to the window
+addFrame();
+// add and initialize all components
+loadComponents();
+
+// export default SibboCMP;
+SibboCMP.init();

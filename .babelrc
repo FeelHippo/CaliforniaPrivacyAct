@@ -1,0 +1,15 @@
+{
+    "presets": [
+        ["@babel/preset-env", {
+            "targets": {
+                "safari": 10,
+                "ie": 11,
+                "chrome": 38,
+                "firefox": 58
+            },
+            "useBuiltIns": "usage",
+            "corejs": 3
+        }]
+    ],
+    "sourceType": "unambiguous"
+}
