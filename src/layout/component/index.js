@@ -4,18 +4,19 @@ import html from './index.html';
 import css from './index.scss';
 
 import SibboCMP from '../../services/sibbo-cmp';
+import SibboI18n from '../../services/sibbo-i18n';
+import { addLogo } from '../layout';
 
 const template = document.createElement('template');
 
 class SibboCMPLayout extends HTMLElement {
     connectedCallback() {
-        console.log('Hello There')
         this._insertTemplate();
 
         this.appendChild(template.content.cloneNode(true));
 
         // addStyle(this);
-
+        addLogo();
         // this._setEventHandlers();
 
         if (this.style.display !== 'none') {
@@ -45,19 +46,17 @@ class SibboCMPLayout extends HTMLElement {
     }
 
     _insertTemplate() {
-        const mainText = 'DEFINE MAIN TEXT';
-        // i18n
-        // const {t} = SibboI18n;
+        const {t} = SibboI18n;
 
         template.innerHTML = `
             <style>${css}</style>${
                 html({
-                    mainText,
-                    acceptAll: 'layout.acceptAll',
-                    rejectAll: 'layout.rejectAll',
-                    accept: 'layout.accept',
-                    saveAndExit: 'layout.saveAndExit',
-                    moreOptions: 'layout.moreOptions',
+                    mainText: t('layout.mainText'),
+                    acceptAll: t('layout.acceptAll'),
+                    rejectAll: t('layout.rejectAll'),
+                    accept: t('layout.accept'),
+                    saveAndExit: t('layout.saveAndExit'),
+                    moreOptions: t('layout.moreOptions'),
                 })
             }
         `

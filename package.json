@@ -29,11 +29,13 @@
     "core-js": "^3.7.0",
     "css-loader": "^5.0.1",
     "html-webpack-plugin": "^4.5.0",
+    "i18next": "^19.8.4",
     "mustache-loader": "^1.4.3",
     "regenerator-runtime": "^0.13.7",
     "sass": "^1.29.0",
     "sass-loader": "^10.1.0",
     "source-map-loader": "^1.1.2",
+    "style-loader": "^2.0.0",
     "to-string-loader": "^1.1.6",
     "uglifyjs-webpack-plugin": "^2.2.0",
     "webpack-merge": "^5.4.0"

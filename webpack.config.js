@@ -9,7 +9,8 @@ const webpack = require('webpack');
 const sharedConfig = () => {
     return {
         entry: {
-            uspapi: './src/uspapi.js'
+            uspapi: './src/uspapi.js',
+            styles: './src/layout/component/index.scss'
         },
         output: {
             filename: '[name].js',
@@ -27,6 +28,10 @@ const sharedConfig = () => {
                     minifyJS: true,
                     removeComments: true
                 }
+            }),
+            new webpack.DefinePlugin({
+                LOGO_URL: JSON.stringify('https://sibboventures.mgr.consensu.org/v2/sibbo_logo.png'),
+                LOGO_HREF: JSON.stringify('https://sibboventures.com'),
             })
         ],
         module: {
@@ -51,6 +56,17 @@ const sharedConfig = () => {
                         tiny: true
                     }
                 }]
+              },
+              {
+                  test: /\.scss$/i,
+                  include: [
+                      path.resolve(__dirname, 'src')
+                  ],
+                  use: [
+                      'style-loader',
+                      'css-loader',
+                      'sass-loader'
+                  ]
               }
             ]
         }

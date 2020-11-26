@@ -1,0 +1,1159 @@
+@import url('https://fonts.googleapis.com/css?family=Open+Sans:400,400i,600,700&display=swap');
+:root {
+  /*--- GENERAL --------------------------------------------------------------*/
+  --sibbo-height-lg: 55vh;
+  --sibbo-height-md: 100vh;
+  --sibbo-height-sm: 75vh;
+  --sibbo-height-xs: 100vh;
+  --sibbo-radius: 2px;
+  /*--- FUENTES --------------------------------------------------------------*/
+  --sibbo-font-face: 'Open Sans', sans-serif;
+  /*--- COLORES---------------------------------------------------------------*/
+  /*--- PRINCIPAL ---*/
+  /*--hsla--*/
+  --sibbo-emphasis-h: 0;
+  --sibbo-emphasis-s: 0%;
+  --sibbo-emphasis-l: 0%;
+  --sibbo-emphasis-light-l: 85%;
+  --sibbo-emphasis-dark-l: 45%;
+  --sibbo-emphasis-a: 1;
+  --sibbo-emphasis-hlsa: hsla(var(--sibbo-emphasis-h), var(--sibbo-emphasis-s), var(--sibbo-emphasis-l), var(--sibbo-emphasis-a));
+  /*--principal--*/
+  --sibbo-emphasis: var(--sibbo-emphasis-hlsa);
+  /*--variaciones--*/
+  --sibbo-emphasis-light: hsla(var(--sibbo-emphasis-h), var(--sibbo-emphasis-s), var(--sibbo-emphasis-light-l), var(--sibbo-emphasis-a));
+  --sibbo-emphasis-dark: hsla(var(--sibbo-emphasis-h), var(--sibbo-emphasis-s), var(--sibbo-emphasis-dark-l), var(--sibbo-emphasis-a));
+  /*--rojo--*/
+  --sibbo-reject: hsl(357, 70%, 52%);
+  --sibbo-acept: hsl(77, 62%, 48%);
+  /*--- FONDO ---*/
+  /*--hsla--*/
+  --sibbo-background-h: 0;
+  --sibbo-background-s: 0%;
+  --sibbo-background-l: 97%;
+  --sibbo-background-a: 1;
+  --sibbo-background-hlsa: hsla(var(--sibbo-background-h), var(--sibbo-background-s), var(--sibbo-background-l), var(--sibbo-background-a));
+  /*--principal--*/
+  --sibbo-background: var(--sibbo-background-hlsa);
+  /*--- OVERLAY ---*/
+  /*--hsla--*/
+  --sibbo-overlay-h: 0;
+  --sibbo-overlay-s: 0%;
+  --sibbo-overlay-l: 0%;
+  --sibbo-overlay-a: .75;
+  --sibbo-overlay-hlsa: hsla(var(--sibbo-overlay-h), var(--sibbo-overlay-s), var(--sibbo-overlay-l), var(--sibbo-overlay-a));
+  /*--principal--*/
+  --sibbo-overlay: var(--sibbo-overlay-hlsa);
+  /*--- TEXTO ---*/
+  /*--hsla--*/
+  --sibbo-text-h: 0;
+  --sibbo-text-s: 0%;
+  --sibbo-text-l: 35%;
+  --sibbo-text-a: 1;
+  --sibbo-text-hlsa: hsla(var(--sibbo-text-h), var(--sibbo-text-s), var(--sibbo-text-l), var(--sibbo-text-a));
+  /*--principal--*/
+  --sibbo-text: var(--sibbo-text-hlsa);
+  --sibbo-text-button: #fff;
+  /*---  NEUTRALES ---*/
+  --sibbo-black: hsl(0, 0%, 15%);
+  --sibbo-gray-dark: hsl(0, 0%, 35%);
+  --sibbo-gray-med: hsl(0, 0%, 65%);
+  --sibbo-gray-light: hsl(0, 0%, 90%);
+  --sibbo-white: hsl(0, 0%, 100%);
+  /*--- FUENTE y ESPACIOS ------------------------------------------------------*/
+  --sibbo-font-size: 13px;
+  --sibbo-line-height: 20px;
+  --sibbo-space: var(--sibbo-line-height);
+  --sibbo-space-small: calc(var(--sibbo-line-height) / 2);
+  --sibbo-space-big: calc(var(--sibbo-line-height) * 1.5);
+}
+
+/*---LAYOUT PRINCIPAL (overlay y caja)----------------------------------------*/
+.sibbo-layout {
+  font-family: var(--sibbo-font-face);
+  z-index: +999999;
+  display: block;
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  background-color: var(--sibbo-overlay);
+  display: flex;
+  justify-content: center;
+  font-weight: normal;
+  letter-spacing: 0px;
+  line-height: var(--sibbo-line-height);
+  max-height: var(--sibbo-height-md);
+  color: var(--sibbo-text);
+  font-size: var(--sibbo-font-size);
+  text-align: initial;
+  @media only screen and (min-width: 1400px) {
+    max-height: var(--sibbo-height-lg);
+  }
+  @media only screen and (max-width: 1280px) {
+    max-height: var(--sibbo-height-sm);
+  }
+  @media only screen and (max-width: 1024px) {
+    max-height: var(--sibbo-height-md);
+  }
+  @media only screen and (max-width: 815px) {
+    max-height: var(--sibbo-height-xs);
+  }
+  .sibbo-closex {
+    pointer-events: none;
+    position: absolute;
+    display: block;
+    height: var(--sibbo-space);
+    width: 100%;
+    max-width: 1230px;
+    top: var(--sibbo-space-big);
+    margin-left: var(--sibbo-space);
+    .sibbo-closex__icon {
+      pointer-events: visible;
+      background-color: var(--sibbo-background);
+      width: var(--sibbo-space);
+      height: var(--sibbo-space);
+      line-height: var(--sibbo-space);
+      font-size: 14px;
+      text-align: center;
+      position: absolute;
+      right: 0;
+      border-radius: 0 var(--sibbo-radius) var(--sibbo-radius) 0;
+      cursor: pointer;
+      font-style: normal;
+      color: var(--sibbo-text);
+      z-index: +500;
+      @supports (-webkit-appearance:none) and (not (overflow:-webkit-marquee))
+      and (not (-ms-ime-align:auto)) and (not (-moz-appearance:none)) {
+        right: var(--sibbo-space-small);
+      }
+    }
+    @media only screen and (max-width: 815px) {
+      display: none;
+    }
+    @media only screen and (max-width: 1024px) {
+      top: var(--sibbo-space-small);
+      margin-left: 0;
+      right: var(--sibbo-space-small);
+      margin-top: 1px;
+      .sibbo-closex__icon {
+        border-radius: var(--sibbo-radius) var(--sibbo-radius) 0 0;
+        @supports (-webkit-appearance:none) and (not (overflow:-webkit-marquee))
+        and (not (-ms-ime-align:auto)) and (not (-moz-appearance:none)) {
+          right: 0;
+        }
+      }
+    }
+  }
+  @media screen and (min-width:0\0) {
+    max-height: 100vh;
+  }
+  * {
+    box-sizing: border-box;
+    text-rendering: optimizeLegibility;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+  .sibbo-icon {
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    vertical-align: middle;
+    font-family: monospace;
+    margin-left: 6px;
+    font-size: 16px;
+    width: var(--sibbo-space);
+    height: var(--sibbo-space);
+    line-height: var(--sibbo-space);
+    font-style: normal;
+    pointer-events: none;
+    &.return {
+      transform: rotate(180deg);
+      vertical-align: bottom;
+      margin-left: 0;
+      margin-right: 6px;
+    }
+  }
+  strong {
+    font-weight: 600;
+  }
+  p {
+    margin: 0 0 var(--space-small);
+  }
+  h3, h4, h2 {
+    margin: 0;
+    margin-bottom: var(--sibbo-space-small);
+    line-height: initial;
+  }
+  h2{
+    font-size: 1.17em;
+  }
+  h3{
+    font-size: 1.17em;
+  }
+  h4{
+    font-size: 13px;
+  }
+  a {
+    color: var(--sibbo-emphasis);
+    text-decoration: underline;
+    &:hover {
+      color: var(--sibbo-emphasis-dark);
+    }
+  }
+  p {
+    margin: 0 0 var(--sibbo-space-small);
+  }
+  .flex {
+    display: flex;
+    align-items: baseline;
+  }
+  .sibbo-panel {
+    margin: var(--sibbo-space-big) var(--sibbo-space-small) 0;
+    display: flex;
+    width: 100%;
+    max-width: 1230px;
+    background-color: var(--sibbo-background);
+    bottom: 0;
+    border-radius: var(--sibbo-radius) 0 0 0;
+  }
+  a,
+  a:focus,
+  .sibbo-cmp-vendor ul:focus,
+  sibbo-cmp-consent-switcher,
+  sibbo-cmp-consent-switcher:focus,
+  .sibbo-cmp-button,
+  .sibbo-cmp-button:focus,
+  .sibbo-panel__main__body__big-title,
+  .sibbo-panel__main__body__big-title:focus {
+    outline: 0;
+    box-shadow: 0;
+  }
+  .sibbo-cmp-vendor ul,
+  .sibbo-cmp-vendor ul:focus {
+    background-color: transparent;
+  }
+  &.sibbo-layout--fullscreen,
+  &.sibbo-layout--tv {
+    --sibbo-font-size: 16px;
+    min-height: 100vh;
+    height: 100vh;
+    max-height: 100vh;
+    padding: 0;
+    .sibbo-cmp-vendor ul {
+      line-height: 24px;
+      padding: 0 0 var(--sibbo-space-small) var(--sibbo-space);
+    }
+    .sibbo-cmp-vendor ul:focus {
+      outline: 0;
+      background-color: hsla(var(--sibbo-emphasis-h), var(--sibbo-emphasis-s), var(--sibbo-emphasis-l), .015);
+    }
+    .sibbo-control-legend { display: none;}
+    .sibbo-panel {
+      margin: 0;
+      border-radius: 0;
+      min-width: 100%;
+      width: 100%;
+      max-width: 100%;
+      .sibbo-panel__main {
+        flex-grow: 0;
+        width: 100%;
+        max-width: 1024px;
+        &__header {
+          padding: 0;
+          h3, h4 {
+            line-height: 30px;
+          }
+        }
+        .sibbo-cmp-vendor__head a {
+          font-size: 18px;
+        }
+        .sibbo-panel__main__header{
+          display: flex;
+          margin: 0px 20px 20px 20px;
+          flex-direction: row-reverse;
+          justify-content: space-between;
+          align-items: center;
+          padding: 20px 0;
+          &.sibbo-panel__main__header--vendors{
+            padding: 45px 0;
+          }
+        }
+
+        .sibbo-panel__main__text,
+        .sibbo-panel__main__header__text {
+          h2, h3 {
+            text-align: center;
+            margin: 0 auto var(--sibbo-space);
+          }
+          p {
+            margin-bottom: var(--sibbo-space);
+          }
+        }
+      }
+      .sibbo-panel__aside {
+        display: none;
+      }
+      .sibbo-panel__aside--main {
+        display: block;
+        margin: 0 auto;
+        padding: 0;
+        width: 100%;
+        max-width: 400px;
+        .sibbo-links,
+        .sibbo-panel__aside__buttons {
+          margin: var(--sibbo-space) 0;
+          padding: 0;
+        }
+      }
+    }
+  }
+  &.sibbo-layout--tv {
+    background-color: var(--sibbo-background);
+    .sibbo-closex {
+      max-width: 100%;
+      margin: 0;
+      .sibbo-closex__icon {
+        display: none;
+        &:focus,
+        &.focus {
+          outline: 2px solid var(--sibbo-text);
+          // outline-color: hsla(var(--sibbo-emphasis-h), var(--sibbo-emphasis-s), var(--sibbo-emphasis-l), 1);
+          transform: scale(1.05);
+        }
+      }
+    }
+    .sibbo-cmp-button {
+      position: relative;
+      .sibbo-control-legend {
+        display: block;
+        position: absolute;
+        width: 20px;
+        height: 20px;
+        background-color: green;
+        border-radius: 10px;
+        right: 12px;
+        top: 50%;
+        margin-top: -10px;
+        border: 2px solid var(--sibbo-text-button);
+      }
+    }
+    .sibbo-cmp-button__secondary > .sibbo-control-legend {
+      border-color: var(--sibbo-emphasis);
+    }
+    .sibbo-cmp-button--ghost {
+      padding-right: 24px !important;
+      .sibbo-control-legend {
+        width: 12px;
+        height: 12px;
+        margin-top: -5px;
+        right: 6px;
+        border-color: var(--sibbo-gray-med);
+      }
+    }
+    .sibbo-panel {
+      width: 100%;
+      max-width: 1400px;
+      margin: 0 auto;
+      padding: var(--sibbo-space-big) 0 var(--sibbo-space);
+      flex-direction: column;
+      justify-content: center;
+      &__main {
+        max-width: 1400px;
+        margin: 0 auto;
+        &__body__big-title:focus {
+          box-shadow:inset 0 0 0 2px var(--sibbo-emphasis);
+          box-shadow:inset 0 0 0 2px hsla(var(--sibbo-emphasis-h), var(--sibbo-emphasis-s), var(--sibbo-emphasis-l), 0.5);
+        }
+      }
+      &__main__header {
+        padding: var(--sibbo-space);
+      }
+    }
+  }
+  &.sibbo-layout--tv {
+    background-color: var(--sibbo-background);
+    .sibbo-panel {
+      width: 100%;
+      max-width: 1400px;
+      margin: 0 auto;
+      padding: var(--sibbo-space-big) 0 var(--sibbo-space);
+      &__main {
+        max-width: 1400px;
+        margin: 0 auto;
+      }
+      &__main__header {
+        padding: var(--sibbo-space);
+      }
+    }
+    .sibbo-cmp-button {
+      &:focus {
+        outline: 2px solid var(--sibbo-text);
+          // outline-color: hsla(var(--sibbo-emphasis-h), var(--sibbo-emphasis-s), var(--sibbo-emphasis-l), 1);
+          transform: scale(1.05);
+      }
+    }
+    a:focus {
+      box-shadow:inset 0 0 0 2px var(--sibbo-emphasis);
+      box-shadow:inset 0 0 0 2px hsla(var(--sibbo-emphasis-h), var(--sibbo-emphasis-s), var(--sibbo-emphasis-l), 0.5);
+      transform: scale(1.05);
+    }
+  }
+  &.sibbo-layout--app {
+    min-height: 100vh;
+    -webkit-text-size-adjust: none !important;
+    .sibbo--welcome__text {
+      padding: 0;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      min-height: 90vh;
+      padding-bottom: 125px;
+    }
+
+    .sibbo-panel__aside--main {
+      background-color: var(--sibbo-background);
+      box-shadow: 0 -2px 15px 2px var(--sibbo-background);
+      position: fixed;
+      bottom: 0;
+      left: 0;
+      margin: 0;
+      padding: var(--sibbo-space-small);
+      .sibbo-panel__aside__buttons {
+        margin-top: 0;
+        padding-top: 0;
+      }
+    }
+    .sibbo-panel__main__header {
+      margin-top: 85px;
+    }
+  }
+
+  &.sibbo-layout--app-ios{
+
+    .sibbo-panel{
+      padding-top: 5vh;
+    }
+    .sibbo-panel__main__header{
+      margin-top: 15vh;
+    }
+
+    /* iPhone X */
+    @media only screen
+    and (device-width : 375px)
+    and (device-height : 812px)
+    and (-webkit-device-pixel-ratio : 3) {
+      .sibbo-panel{
+        padding-top: 11vh;
+      }
+      .sibbo-panel__main__header{
+        margin-top: 12vh;
+      }
+    }
+
+  }
+  &.sibbo-layout--top {
+    top: 0;
+    bottom: auto;
+    .sibbo-closex {
+      top: 0;
+    }
+    .sibbo-panel {
+      margin: 0 var(--sibbo-space-small) var(--sibbo-space-big);
+      border-radius: 0 0 var(--sibbo-radius) var(--sibbo-radius);
+    }
+  }
+  .sibbo-cmp-button,
+  .sibbo-cmp-button--xs {
+    font-size: 18px;
+  }
+}
+/*----------------------------------------------------------------------------
+/*---SECCIÓN PRINCIPAL--------------------------------------------------------*/
+.sibbo--welcome__text {
+  font-size: 14px;
+  line-height: 21px;
+}
+.sibbo-panel__main {
+  flex-grow: 1;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  overflow-y: auto;
+  overflow: hidden;
+  &__header,
+  &__header--vendors {
+    display: block;
+    margin: var(--sibbo-space) var(--sibbo-space) calc(var(--sibbo-space) / 2 ) var(--sibbo-space);
+    &__return {
+      display: none;
+    }
+    &__title {
+      flex-grow: 1;
+      & > * {margin: 0;}
+      h4 { margin-bottom: calc(var(--sibbo-space) / 3 ); }
+      & > * {
+        overflow: hidden;
+        max-width: 100%;
+        text-overflow: ellipsis;
+      }
+    }
+    &__text {
+      display: none;
+      &.sibbo-panel__main__header__text--no-aside {
+        margin-top: var(--sibbo-space-small);
+        display: block;
+        max-height: 35vh;
+        overflow: auto;
+        @media only screen and (max-width: 815px) {
+          max-height: auto;
+          overflow: hidden;
+        }
+        @media screen and (min-width:0\0) {
+          height: 15vh;
+          overflow: auto;
+        }
+      }
+      & * {
+        overflow: hidden;
+        max-width: 100%;
+        text-overflow: ellipsis;
+      }
+    }
+    &__footer {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      @media only screen and (max-width: 815px) {
+        align-items: flex-start;
+        flex-direction: column;
+      }
+    }
+    &__actions {
+      align-self: flex-end;
+      display: flex;
+      align-items: center;
+      justify-content: flex-end;
+      padding: 5px;
+      .sibbo-cmp-button + .sibbo-cmp-button {
+        margin-left: calc(var(--sibbo-space) / 2);
+      }
+      @media only screen and (max-width: 815px) {
+        align-items: center;
+        width: 100%;
+        .sibbo-cmp-button {
+          width: 100%;
+        }
+      }
+    }
+  }
+  &__body {
+    position: relative;
+    flex-grow: 1;
+    margin: 0 var(--sibbo-space);
+    background-color: var(--sibbo-background);
+    border: 1px solid var(--sibbo-gray-light);
+    max-height: var(--sibbo-height-sm);
+    overflow: hidden;
+    overflow-y: auto;
+    border-radius: var(--sibbo-radius);
+    //altura máxima para IE9 IE10 e IE11
+    @media screen and (min-width:0\0) {
+      max-height: 55vh;
+    }
+    &__big-title {
+      padding: var(--sibbo-space-small);
+      background-color: hsla(0, 0%, 90%, .25);
+      border-bottom: 1px solid var(--sibbo-gray-light);
+
+      &__title {
+        color: var(--sibbo-text);
+        font-size: 16px;
+        text-transform: uppercase;
+      }
+    }
+    &__title {
+      background-color: var(--sibbo-background);
+      color: var(--sibbo-text);
+      margin: 0;
+      padding: 6px var(--sibbo-space-small);
+      border-bottom: 1px solid var(--sibbo-gray-light);
+      text-transform: capitalize;
+      h4 {margin: 0;}
+    }
+  }
+  & .sibbo-panel__main__text {
+    padding: var(--sibbo-space-big) var(--sibbo-space-big) 0;
+    flex-grow: 1;
+    overflow-y: auto;
+    p {
+      font-size: var(--sibbo-font-size);
+      line-height: var(--sibbo-space);
+      margin: 0 0 var(--sibbo-space-small);
+
+      @media only screen and (max-width: 815px) {
+        font-size: 11px;
+      line-height: 18px;
+
+      }
+    }
+  }
+  .sibbo-logo {
+    display: block;
+    max-height: var(--sibbo-space);
+    margin: var(--sibbo-space-small) auto var(--sibbo-space-small);
+    object-fit: contain;
+    @media screen and (min-width:0\0) {
+      width: 123px;
+    }
+    @media only screen and (max-width: 815px) {
+      display: none;
+    }
+  }
+  &__footer {
+    display: flex;
+    margin: 0 var(--sibbo-space) 0;
+    flex-direction: row-reverse;
+    justify-content: space-between;
+    align-items: center;
+    padding: var(--sibbo-space) 0;
+    h3 {
+      margin-right: var(--sibbo-space-small);
+    }
+    a {
+      font-size: var(--sibbo-font-size);
+    }
+    &__actions {
+      align-self: flex-end;
+      display: flex;
+      align-items: flex-end;
+      .sibbo-cmp-button + .sibbo-cmp-button {
+        margin-left: calc(var(--sibbo-space) / 2);
+      }
+      @media only screen and (max-width: 815px) {
+        width: 100%;
+        .sibbo-cmp-button {
+          width: 100%;
+        }
+      }
+    }
+  }
+}
+
+/*---ASIDE--------------------------------------------------------------------*/
+.sibbo-panel__aside {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  min-width: 342px;
+  width: 342px;
+  max-width: 342px;
+  position: relative;
+  @media only screen and (max-width: 815px) {
+    width: 100%;
+    max-width: 100%;
+  }
+  &__body {
+    margin: var(--sibbo-space) 0;
+    padding: 0 calc(var(--sibbo-space-small) * 2) 0 var(--sibbo-space-small);
+    overflow: hidden;
+    overflow-y: auto;
+    p {
+      line-height: calc(var(--font-size) + 6px);
+      overflow: hidden;
+      width: 100%;
+      text-overflow: ellipsis;
+    }
+  }
+  &__buttons {
+    padding: var(--sibbo-space) var(--sibbo-space-big) 0 0;
+    .sibbo-cmp-button + .sibbo-cmp-button {
+      margin-top: var(--sibbo-space-small);
+    }
+  }
+  & > .sibbo-links {
+    font-size: var(--sibbo-font-size);
+    padding: 0 calc(var(--sibbo-space-small) * 2) var(--sibbo-space) var(--sibbo-space-small);
+    width: 100%;
+  }
+}
+/*----------------------------------------------------------------------------*/
+/*---BOTONES Y ENLACES -------------------------------------------------------*/
+.sibbo-layout {
+  .sibbo-cmp-button {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    white-space: nowrap;
+    padding: 0 var(--sibbo-space);
+    text-decoration: none;
+    font-size: 16px;
+    height: var(--sibbo-space-big);
+    line-height: var(--sibbo-space-big);
+    border-radius: var(--sibbo-radius);
+    text-align: center;
+    text-transform: uppercase;
+    background-color: var(--sibbo-emphasis);
+    border: 1px solid var(--sibbo-emphasis);
+    color: var(--sibbo-text-button);
+    box-shadow: 0px 1px 2px 0px rgba(51, 51, 51, 0.1);
+    font-style: normal;
+    .sibbo-icon {
+      @media screen and (min-width:0\0) {
+        padding-top: 0;
+        &.return {
+          padding-top: 0;
+          padding-bottom: 2px;
+        }
+      }
+    }
+    &:hover {
+      background-color: hsla(var(--sibbo-emphasis-h), var(--sibbo-emphasis-s), var(--sibbo-emphasis-l), .75);
+      border-color: hsla(var(--sibbo-emphasis-h), var(--sibbo-emphasis-s), var(--sibbo-emphasis-l), .75);
+      color: var(--sibbo-text-button);
+    }
+    &:active {
+      background-color: var(--sibbo-emphasis-dark);
+      border-color: var(--sibbo-emphasis-dark);
+      color: var(--sibbo-white);
+    }
+    &.sibbo-cmp-button__secondary {
+      color: var(--sibbo-emphasis);
+      background-color: transparent;
+      &:hover {
+        color: var(--sibbo-emphasis);
+        border-color: hsla(var(--sibbo-emphasis-h), var(--sibbo-emphasis-s), var(--sibbo-emphasis-l), .75);
+        background-color: hsla(var(--sibbo-emphasis-h), var(--sibbo-emphasis-s), var(--sibbo-emphasis-l), .025);
+      }
+      &:active {
+        color: var(--sibbo-emphasis-dark);
+      }
+    }
+    &.sibbo-cmp-button--ghost {
+      background-color: transparent;
+      border: 1px solid var(--sibbo-text);
+      color: var(--sibbo-text);
+      box-shadow: 0px 1px 2px 0px rgba(0, 0, 0, 0.1);
+      &:hover,
+      &:active {
+        color: var(--sibbo-acept);
+        border-color: var(--sibbo-acept);
+      }
+      &:hover {
+        @media only screen and (max-width: 815px) {
+          color: var(--sibbo-gray-med);
+          border-color: var(--sibbo-gray-med);
+        }
+      }
+      &.negative {
+        &:hover,
+        &:active {
+          color: var(--sibbo-reject);
+          border-color: var(--sibbo-reject);
+        }
+        &:hover {
+          @media only screen and (max-width: 815px) {
+            color: var(--sibbo-gray-med);
+            border-color: var(--sibbo-gray-med);
+          }
+        }
+      }
+    }
+    &.sibbo-cmp-button--xs {
+      font-size: var(--sibbo-font-size);
+      height: 24px;
+      line-height: 24px;
+      padding: 0 var(--sibbo-space-small);
+      text-transform: none;
+    }
+    &.sibbo-cmp-button--xl {
+      font-size: 16px;
+      height: 52px;
+      line-height: 52px;
+      padding: 0 var(--sibbo-space-small);
+      @media only screen and (max-width: 815px) {
+        line-height: 30px;
+        height: 30px;
+        font-size: 14px;
+      }
+    }
+    &.sibbo-cmp-button--disabled {
+      cursor: not-allowed;
+      color: var(--sibbo-gray-med);
+      border-color: var(--sibbo-gray-light);
+      background-color: var(--sibbo-gray-light);
+    }
+  }
+  @media only screen and (max-width: 815px) {
+    .sibbo-cmp-button {
+      text-transform: none;
+      width: 100%;
+    }
+    *:focus {
+      outline: none !important;
+      outline: 0 !important;
+      transform: scale(1) !important;
+    }
+  }
+
+
+  sibbo-cmp-purpose {
+    display: block;
+    border-bottom: 1px dotted var(--sibbo-gray-light);
+    padding-left: var(--sibbo-space-small);
+    &:last-of-type {
+      border-bottom: 0;
+    }
+  }
+
+  sibbo-cmp-vendor {
+    display: block;
+    border-top: 1px dotted var(--sibbo-gray-light);
+    &:last-of-type {
+      border-bottom: 1px dotted var(--sibbo-gray-light);
+    }
+  }
+  sibbo-cmp-other-vendor + sibbo-cmp-other-vendor {
+    .sibbo-cmp-vendor {
+      padding-top: 0;
+    }
+  }
+
+  a {
+    color: var(--sibbo-emphasis);
+    text-decoration: none;
+    font-style: italic;
+    &:hover {
+      color: var(--sibbo-emphasis-dark);
+    }
+  }
+  .sibbo-links {
+    display: flex;
+    & > a,
+    & > sibbo-cmp-nav {
+      white-space: nowrap;
+      width: 100%;
+      text-align: center;
+      & + a,
+      & + sibbo-cmp-nav {
+        margin-left: 6px;
+        padding-left: 6px;
+        border-left: 1px solid var(--sibbo-emphasis);
+      }
+    }
+  }
+}
+/*----------------------------------------------------------------------------*/
+@media only screen and (max-width: 815px) {
+  .sibbo-layout {
+    max-height: var(--sibbo-height-xs);
+    min-height: 20vh;
+    padding: 0;
+    h2,h3,.sibbo-panel__main__body__big-title__title {
+      font-size: 13px;
+    }
+
+    .sibbo-panel {
+      margin: 0;
+      border-radius: 0;
+      min-width: 100%;
+      width: 100%;
+      max-width: 100%;
+      flex-direction: column;
+      max-width: 100%;
+      bottom: 0;
+      padding: var(--sibbo-space-small);
+      padding-bottom: 0;
+      display: block !important;
+      overflow-y: auto;
+      box-shadow: 0px -2px 10px 0px rgba(0, 0, 0, 0.31);
+    }
+  }
+  .sibbo-panel__main {
+    position: relative;
+    border-radius: 0;
+    & .sibbo-panel__main__text {
+      padding: 5px var(--sibbo-space-small) 0;
+    }
+    &__header,
+    &__header--vendors {
+      display: block;
+      max-width: 100%;
+      margin: 105px 0 0;
+      &__fix {
+        position: fixed;
+        display: flex;
+        flex-direction: column;
+        align-items: flex-end;
+        justify-content: flex-end;
+        height: 80px;
+        width: 100%;
+        left: 0;
+        top: 0;
+        padding: var(--sibbo-space-small);
+        background-color: var(--sibbo-background);
+        z-index: +100;
+        box-shadow: 0px 2px 3px 0px rgba(0, 0, 0, 0.11);
+        .sibbo-closex {
+          color: red !important;
+          @media only screen and (max-width: 815px) {
+            display: block;
+            position: absolute;
+          }
+        }
+      }
+      &__return {
+        display: block;
+        position: absolute;
+        top: -8px;
+        left: var(--sibbo-space-small);
+        width: 100%;
+        margin-bottom: var(--sibbo-space-small);
+        padding: 12px 5px 0;
+        & > a {
+          position: relative;
+          top: 8px;
+        }
+      }
+      &__text {
+        display: block !important;
+      }
+    }
+    &__body {
+      margin: var(--sibbo-space-small) 0 65px;
+    }
+    &__footer {
+      display: flex;
+      align-items: center;
+      width: 100%;
+      margin: 0;
+      padding: var(--sibbo-space-small);
+      margin-top: var(--sibbo-space);
+      flex-direction: column-reverse;
+      background: var(--sibbo-background);
+      position: fixed;
+      left: 0;
+      bottom: 0;
+      box-shadow: 0px -2px 3px 0px rgba(0, 0, 0, 0.11);
+      z-index: +100;
+      & .sibbo-cmp-button--xs {
+        font-size: 16px !important;
+        height: var(--sibbo-space-big) !important;
+        line-height: var(--sibbo-space-big) !important;
+      }
+      & > .sibbo-links {
+        display: none;
+        & > sibbo-cmp-nav {
+          text-align: left;
+          display: inline;
+          width: auto;
+        }
+      }
+    }
+  }
+  .sibbo-panel__aside {
+    display: none;
+  }
+  .sibbo-panel__aside--main {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    margin: var(--sibbo-space-small) 0;
+    border-radius: 0;
+    max-width: 100%;
+    & .sibbo-panel__aside__buttons {
+      margin: 0 0 var(--sibbo-space-small);
+      display: flex;
+      .sibbo-cmp-button {
+        margin-top: 0;
+        width: 100%;
+        & + .sibbo-cmp-button {
+          margin-left: var(--sibbo-space-small);
+        }
+      }
+    }
+    .sibbo-links {
+      width: 100%;
+      padding: 0;
+      a {
+        display: block;
+        margin: 0;
+        flex-grow: 1;
+        text-align: center;
+        text-decoration: none;
+        & + a {
+          margin: 0;
+          border-left: 1px solid;
+        }
+      }
+    }
+  }
+}
+.sibbo-panel__aside--main {
+  justify-content: flex-start;
+  .sibbo-panel__aside__buttons {
+    padding-top: var(--sibbo-space-big);
+    @media only screen and (max-width: 815px) {
+      padding: 0 0 0;
+    }
+  }
+  .sibbo-links {
+    padding: var(--sibbo-space) 0;
+    a {
+      font-size: 14px;
+    }
+    @media only screen and (max-width: 815px) {
+      padding: 0 0 var(--sibbo-space-small);
+      a{
+        font-size: 12px;
+      }
+    }
+  }
+  .sibbo-logo {
+    display: none;
+    max-height: 16px;
+    margin: 0 auto var(--sibbo-space-small);
+    object-fit: contain;
+    @media screen and (min-width:0\0) {
+      width: 110px;
+    }
+    @media only screen and (max-width: 815px) {
+      display: block;
+    }
+  }
+}
+.sibbo-panel__main__header__fix .sibbo-closex,
+.sibbo-panel__main__header--vendors__fix .sibbo-closex {
+  display: none;
+  @media only screen and (max-width: 815px) {
+    display: block;
+  }
+}
+
+/*--- DISPARADOR DEL PANEL SIBBO ---------------------------------------------*/
+.sibbo-trigger {
+  font-family: arial;
+  background-color: var(--sibbo-emphasis);
+  color: var(--sibbo-text-button);
+  transform: rotate(-90deg);
+  height: var(--sibbo-space-big);
+  line-height: var(--sibbo-space-big);
+  padding: 0 var(--sibbo-space);
+  border-radius: var(--sibbo-radius) var(--sibbo-radius) 0 0;
+  cursor: pointer;
+  position: fixed;
+  bottom: 5vh;
+  right: -35px;
+  text-decoration: none;
+  font-size: 15px;
+}
+.sibbo-trigger--left {
+  @extend .sibbo-trigger;
+  border-radius: 0 0 var(--sibbo-radius) var(--sibbo-radius);
+  right: auto;
+  left: -35px;
+}
+/*--- FIN DEL DISPARADOR DEL PANEL SIBBO -------------------------------------*/
+
+/*----------------------------------------------------------------------------*/
+/*---COMPONENTES--------------------------------------------------------------*/
+// @import 'components/consent-switcher';
+// @import 'components/purpose';
+// @import 'components/vendor';
+/*----------------------------------------------------------------------------*/
+.sibbo-cmp-other-vendor__body ul {
+  margin: 0 !important;
+}
+
+/* LOADER */
+.loader {
+  margin: 0 auto;
+  border: 0px;
+}
+
+.lds-roller {
+  display: inline-block;
+  position: relative;
+  width: 80px;
+  height: 80px;
+}
+.lds-roller div {
+  animation: lds-roller 1.2s cubic-bezier(0.5, 0, 0.5, 1) infinite;
+  transform-origin: 40px 40px;
+}
+.lds-roller div:after {
+  content: " ";
+  display: block;
+  position: absolute;
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: #cef;
+  margin: -4px 0 0 -4px;
+}
+.lds-roller div:nth-child(1) {
+  animation-delay: -0.036s;
+}
+.lds-roller div:nth-child(1):after {
+  top: 63px;
+  left: 63px;
+}
+.lds-roller div:nth-child(2) {
+  animation-delay: -0.072s;
+}
+.lds-roller div:nth-child(2):after {
+  top: 68px;
+  left: 56px;
+}
+.lds-roller div:nth-child(3) {
+  animation-delay: -0.108s;
+}
+.lds-roller div:nth-child(3):after {
+  top: 71px;
+  left: 48px;
+}
+.lds-roller div:nth-child(4) {
+  animation-delay: -0.144s;
+}
+.lds-roller div:nth-child(4):after {
+  top: 72px;
+  left: 40px;
+}
+.lds-roller div:nth-child(5) {
+  animation-delay: -0.18s;
+}
+.lds-roller div:nth-child(5):after {
+  top: 71px;
+  left: 32px;
+}
+.lds-roller div:nth-child(6) {
+  animation-delay: -0.216s;
+}
+.lds-roller div:nth-child(6):after {
+  top: 68px;
+  left: 24px;
+}
+.lds-roller div:nth-child(7) {
+  animation-delay: -0.252s;
+}
+.lds-roller div:nth-child(7):after {
+  top: 63px;
+  left: 17px;
+}
+.lds-roller div:nth-child(8) {
+  animation-delay: -0.288s;
+}
+.lds-roller div:nth-child(8):after {
+  top: 56px;
+  left: 12px;
+}
+@keyframes lds-roller {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}

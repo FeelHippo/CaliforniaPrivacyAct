@@ -1,0 +1,10 @@
+{
+    "layout": {
+        "acceptAll": "Aceptar todo",
+        "rejectAll": "Rechazar todo",
+        "accept": "Acepto",
+        "saveAndExit": "Guardar y cerrar",
+        "moreOptions": "Configurar / Rechazar",
+        "mainText": "<h2> En <strong>cliente.es </strong> nos preocupa su privacidad </h2><p> Nosotros y nuestros socios utilizamos cookies e identificadores para almacenar y acceder a información en su dispositivo y recabar datos personales sobre la audiencia, desarrollar y mejorar productos así como servir y medir anuncios y/o contenido personalizados basándonos en su navegación (por ejemplo páginas visitadas). Con su permiso, podemos utilizar datos de localización geográfica precisa e identificación mediante las características de dispositivos. </p><p>Algunas compañías requieren de su consentimiento y otras basan este en el interés legítimo pero usted podrá decidir si se opone a dicho tratamiento. </p><p>Puede aceptar o rechazar/configurar el uso de cookies para esta web o aplicación en el botón correspondiente. Podrá modificar su elección en Ajustes de Privacidad / Cookies. Más info <a href='https://www.cliente.es/cookies/'>Política de Cookies.</a></p>"
+    }
+}

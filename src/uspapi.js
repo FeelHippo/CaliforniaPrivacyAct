@@ -5,6 +5,7 @@ import './services/custom-event';
 import { addFrame, getUSPData } from './layout/layout.js';
 import SibboCMP from './services/sibbo-cmp';
 import loadComponents from './layout/component/index';
+import cmpConfiguration from '../cmp-configuration';
 
 let pendingCalls = [];
 
@@ -67,6 +68,5 @@ window.addEventListener('message', __handleUspapiMessage, false);
 addFrame();
 // add and initialize all components
 loadComponents();
-
 // export default SibboCMP;
-SibboCMP.init();
+SibboCMP.init(cmpConfiguration);

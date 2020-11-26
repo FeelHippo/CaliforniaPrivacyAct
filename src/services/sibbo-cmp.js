@@ -1,9 +1,13 @@
+import SibboI18n from '../services/sibbo-i18n';
 const BOTS_REGEX = /bot|Chrome-Lighthouse|google|baidu|bing|msn|duckduckbot|teoma|slurp|yandex/i;
 
 export default class SibboCMP {
     static init(configParams) {
         const isBotCmp = BOTS_REGEX.test(navigator.userAgent);
         if (isBotCmp || this._CMPInserted()) { return }
+
+        const { locale } = configParams;
+        SibboI18n.init(locale);
 
         let visible = true;
         this._initialState(visible);
@@ -17,7 +21,7 @@ export default class SibboCMP {
         if (document.body) {
             const layout = document.createElement('sibbo-cmp-layout');
 
-            if (!visible) { layout.setAttribute('style', 'display: none;') }
+            if (visible) { layout.setAttribute('style', 'display: block;') }
 
             document.body.appendChild(layout);
 
