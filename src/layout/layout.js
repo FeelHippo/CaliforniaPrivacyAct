@@ -18,6 +18,15 @@ export const addFrame = () => {
     }
 };
 
+export const setUSPData = (apiver, notice, optOut, lspa) => {
+    const consent_uspapi = consent_validation(apiver, notice, optOut, lspa);
+    if (uspString.setUsprivacyString(consent_uspapi)){
+        Storage.setString(consent_uspapi);
+    } else {
+        console.log('String not valid.');
+    }
+}
+
 export const getUSPData = (apiver, callback) => {
     if (typeof callback === 'function') {
         if (
@@ -114,4 +123,35 @@ export const addLogo = () => {
 
     mainText.insertAdjacentHTML('afterend', logo);
     mainAside.insertAdjacentHTML('beforeend', logo);
+}
+
+const consent_validation = (apiver, notice, optOut, lspa) => {
+    if (!apiver === API_VERSION) {
+        apiver= API_VERSION;
+    }
+    if (notice) {
+        notice = 'Y';
+    } else {
+        notice = 'N';
+    }
+    if (typeof optOut === "boolean") {
+        if (optOut) {
+            optOut = 'Y';
+        } else {
+            optOut = 'N';
+        }
+    } else {
+        optOut = '-';
+    }
+    if (typeof lspa === "boolean") {
+        if (lspa) {
+            lspa = 'Y';
+        } else {
+            lspa = 'N';
+        }
+    } else {
+        lspa = '-';
+    }
+    
+    return `${apiver}${notice}${optOut}${lspa}`;
 }

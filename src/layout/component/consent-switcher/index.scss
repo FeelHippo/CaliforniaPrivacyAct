@@ -1,0 +1,77 @@
+:root {
+    /*--- VARIABLES DEL COMPONENTE ---*/
+    --sibbo-switcher-height: calc(var(--sibbo-line-height) * 2);
+    --sibbo-switcher-radio: 3px;
+    --sibbo-switcher-font-size: 9px;
+    --sibbo-switcher-width: 200px;
+    --sibbo-switcher-accept: hsl(111, 54%, 57%);
+    --sibbo-switcher-reject: var(--sibbo-reject);
+  }
+  .sibbo-layout--tv {
+    --sibbo-switcher-font-size: 12px;
+    --sibbo-switcher-width: 115px;
+    sibbo-cmp-consent-switcher {
+      &:focus {
+        outline: 2px solid var(--sibbo-text);
+        // outline-color: hsla(var(--sibbo-emphasis-h), var(--sibbo-emphasis-s), var(--sibbo-emphasis-l), 0.5);
+        transform: scale(1.05);
+      }
+    }
+  }
+  sibbo-cmp-consent-switcher {
+    display: flex;
+    align-items: center;
+  }
+  
+  .sibbo-cmp-consent-switcher {
+    display: inline-block;
+    height: var(--sibbo-switcher-reject);
+    line-height: var(--sibbo-switcher-reject);
+    background-color: var(--sibbo-gray-light);
+    width: var(--sibbo-switcher-width);
+    border-radius: var(--sibbo-switcher-radio);
+    position: relative;
+    margin: 1rem auto;
+  }
+  .sibbo-cmp-consent-switcher__input {
+    display: none;
+  }
+  .sibbo-cmp-consent-switcher__label {
+    float: left;
+    width: 50%;
+    font-size: calc(var(--sibbo-switcher-font-size) * 1.5);
+    font-weight: bolder;
+    line-height: var(--sibbo-line-height);
+    color: var(--sibbo-black);
+    text-align: center;
+    cursor: pointer;
+    position: inherit;
+    z-index: +1;
+    transition: color 0.15s cubic-bezier(0.4, 0.0, 0.2, 1);
+    will-change: transform;
+    margin-bottom: 0;
+  }
+  .sibbo-cmp-consent-switcher__toggle {
+    position: absolute;
+    width: calc(var(--sibbo-switcher-width) / 2);
+    cursor: pointer;
+    top: 0;
+    bottom: 0;
+    transition: all 0.25s cubic-bezier(0.4, 0.0, 0.2, 1);
+    will-change: transform;
+  }
+  .sibbo-cmp-consent-switcher__input:checked + .sibbo-cmp-consent-switcher__label {
+    color: var(--sibbo-white);
+  }
+  .sibbo-cmp-consent-switcher__input--accept:checked ~ .sibbo-cmp-consent-switcher__toggle {
+    background-color: var(--sibbo-acept);
+    border-radius: 0 var(--sibbo-switcher-radio) var(--sibbo-switcher-radio) 0;
+    left: 50%;
+    color: var(--sibbo-white);
+  }
+  .sibbo-cmp-consent-switcher__input--refuse:checked ~ .sibbo-cmp-consent-switcher__toggle {
+    background-color: var(--sibbo-switcher-reject);
+    border-radius: var(--sibbo-switcher-radio) 0 0 var(--sibbo-switcher-radio);
+    left: 0;
+    color: var(--sibbo-white);
+  }

@@ -9,15 +9,17 @@ import { addLogo } from '../layout';
 
 const template = document.createElement('template');
 
-class SibboCMPLayout extends HTMLElement {
+export default class SibboCMPLayout extends HTMLElement {
     connectedCallback() {
         this._insertTemplate();
 
         this.appendChild(template.content.cloneNode(true));
-
-        // addStyle(this);
+        this._addConsentSwitcher();
         addLogo();
-        // this._setEventHandlers();
+        // true == optin, false == optout
+        let optInOut = new Boolean();
+        
+        this._setEventHandlers();
 
         if (this.style.display !== 'none') {
             this._addEvents();
@@ -61,6 +63,29 @@ class SibboCMPLayout extends HTMLElement {
             }
         `
     }
+
+    _addConsentSwitcher() {
+        this.querySelector('.sibbo-panel__aside').insertAdjacentHTML('beforeend', `
+            <sibbo-cmp-consent-switcher
+                tabindex="0"
+                value="${this.optInOut ? '1' : '0'}"
+            >
+            </sibbo-cmp-consent-switcher>
+        `)
+    }
+
+    _setEventHandlers() {
+        // consent switch
+        const switcher = this.querySelector('sibbo-cmp-consent-switcher');
+        if (switcher) {
+            switcher.addEventListener('opt-in', () => {
+                this.optInOut = true;
+            })
+            switcher.addEventListener('opt-out', () => {
+                this.optInOut = false;
+            })
+        }
+    }
     
     _addEvents() {
         this.addEventListener('click', event => {
@@ -98,12 +123,4 @@ class SibboCMPLayout extends HTMLElement {
             this.consentSubmitted = true;
         }
     }
-}
-
-export default () => {
-    
-    const register = () => {
-        customElements.define('sibbo-cmp-layout', SibboCMPLayout);
-    };
-    window.WebComponents ? window.WebComponents.waitFor(register) : register();
 }

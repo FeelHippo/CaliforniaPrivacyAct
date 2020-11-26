@@ -51,7 +51,7 @@ export default class SibboCMP {
     }
 
     static open() {
-        const layout = document.querySelector('sibbo-cmp=layout');
+        const layout = document.querySelector('sibbo-cmp-layout');
         const isClosed = layout.style.display === 'none';
 
         if (isClosed) {
