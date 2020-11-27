@@ -1,6 +1,5 @@
 {
     "layout": {
-        "deny": "Rechazar",
         "confirm": "Confirmar",
         "saveAndExit": "Guardar y cerrar",
         "moreOptions": "Configurar / Rechazar",

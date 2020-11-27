@@ -543,7 +543,7 @@
         align-items: center;
         width: 100%;
         .sibbo-cmp-button {
-          width: 100%;
+          width: 50%;
         }
       }
     }
@@ -674,7 +674,7 @@
     align-items: center;
 
     padding: var(--sibbo-space) var(--sibbo-space-big) 0 0;
-    margin: var(--sibbo-space-small) 0;
+    margin: var(--sibbo-space-small) auto;
 
     div {
       font-weight: bolder;
@@ -983,7 +983,8 @@
       display: flex;
       .sibbo-cmp-button {
         margin-top: 0;
-        width: 100%;
+        width: 50%;
+        margin: 0 auto;
         & + .sibbo-cmp-button {
           margin-left: var(--sibbo-space-small);
         }

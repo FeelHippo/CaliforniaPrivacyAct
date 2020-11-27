@@ -57,7 +57,6 @@ export default class SibboCMPLayout extends HTMLElement {
             <style>${css}</style>${
                 html({
                     mainText: t('layout.mainText'),
-                    deny: t('layout.deny'),
                     confirm: t('layout.confirm'),
                     saveAndExit: t('layout.saveAndExit'),
                     moreOptions: t('layout.moreOptions'),
