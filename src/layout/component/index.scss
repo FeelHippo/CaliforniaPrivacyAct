@@ -667,6 +667,21 @@
       text-overflow: ellipsis;
     }
   }
+  .sibbo-opt-in-out {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+    padding: var(--sibbo-space) var(--sibbo-space-big) 0 0;
+    margin: var(--sibbo-space-small) 0;
+
+    div {
+      font-weight: bolder;
+      text-align: center;
+      margin-bottom: var(--sibbo-space-small);
+    }
+  }
   &__buttons {
     padding: var(--sibbo-space) var(--sibbo-space-big) 0 0;
     .sibbo-cmp-button + .sibbo-cmp-button {

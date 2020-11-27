@@ -2,7 +2,6 @@ import "core-js/stable";
 import "regenerator-runtime/runtime";
 import Storage from '../storage/storage';
 import UsprivacyString from '../usprivacy-string';
-const API_VERSION = 1;
 let uspString = new UsprivacyString();
 
 export const addFrame = () => {
@@ -21,7 +20,7 @@ export const addFrame = () => {
 export const setUSPData = (apiver, notice, optOut, lspa) => {
     const consent_uspapi = consent_validation(apiver, notice, optOut, lspa);
     if (uspString.setUsprivacyString(consent_uspapi)){
-        Storage.setString(consent_uspapi);
+        Storage.setString(COOKIE_NAME, consent_uspapi);
     } else {
         console.log('String not valid.');
     }
@@ -39,7 +38,7 @@ export const getUSPData = (apiver, callback) => {
             return;
         }
         // retrieve data from local storage
-        let consent_string = Storage.getString('usprivacy');
+        let consent_string = Storage.getString(COOKIE_NAME);
         if (consent_string.length) {
             if (!uspString.setUsprivacyString(consent_string)) {
                 console.log('Warning: consent string not set.');
@@ -140,9 +139,7 @@ const consent_validation = (apiver, notice, optOut, lspa) => {
         } else {
             optOut = 'N';
         }
-    } else {
-        optOut = '-';
-    }
+    } 
     if (typeof lspa === "boolean") {
         if (lspa) {
             lspa = 'Y';

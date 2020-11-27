@@ -32,6 +32,8 @@ const sharedConfig = () => {
             new webpack.DefinePlugin({
                 LOGO_URL: JSON.stringify('https://sibboventures.mgr.consensu.org/v2/sibbo_logo.png'),
                 LOGO_HREF: JSON.stringify('https://sibboventures.com'),
+                COOKIE_NAME: JSON.stringify('us_privacy'),
+                API_VERSION: 1,
             })
         ],
         module: {

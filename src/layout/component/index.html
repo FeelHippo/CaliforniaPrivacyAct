@@ -14,19 +14,21 @@
             <div class="sibbo-panel__aside__buttons">
                 <a
                     href="#"
-                    class="sibbo-cmp-button sibbo-cmp-button--xl"
+                    id="sibbo-button"
+                    class="sibbo-cmp-button sibbo-cmp-button--xl sibbo-cmp-button--disabled"
                     data-focus
                     data-green
-                    data-accept-all
+                    data-accept
                 >
-                    {{accept}}
+                    {{confirm}}
                 </a>
                 <a
                     href="#"
+                    id="sibbo-button"
                     class="sibbo-cmp-button sibbo-cmp-button--xl sibbo-cmp-button__secondary"
-                    data-yellow
+                    data-deny
                 >
-                    {{rejectAll}}
+                    {{deny}}
                 </a>
             </div>
         </div>

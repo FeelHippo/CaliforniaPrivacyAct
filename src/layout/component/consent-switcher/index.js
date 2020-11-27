@@ -26,8 +26,8 @@ export default class SibboConsentSwitcher extends HTMLElement {
     _insertTemplate() {
         const {t} = SibboI18n;
         template.innerHTML = html({
-            accept: t('consentSwitcher.accept'),
-            reject: t('consentSwitcher.reject')
+            yes: t('consentSwitcher.yes'),
+            no: t('consentSwitcher.no')
         })
     }
 
@@ -35,22 +35,22 @@ export default class SibboConsentSwitcher extends HTMLElement {
         const accepted = this.querySelector('input[value="1"]');
         const rejected = this.querySelector('input[value="0"]');
 
-        accepted.setAttribute('id', 'optIn');
-        rejected.setAttribute('id', 'optOut');
+        accepted.setAttribute('id', 'optOut');
+        rejected.setAttribute('id', 'optIn');
 
-        accepted.nextElementSibling.setAttribute('for', 'optIn');
-        rejected.nextElementSibling.setAttribute('for', 'optOut');
+        accepted.nextElementSibling.setAttribute('for', 'optOut');
+        rejected.nextElementSibling.setAttribute('for', 'optIn');
 
         accepted.addEventListener('click', () => {
             rejected.checked = false;
-            this.dispatchEvent(new CustomEvent('opt-in', {
+            this.dispatchEvent(new CustomEvent('opt-out', {
                 bubbles: true,
             }))
         });
 
         rejected.addEventListener('click', () => {
             accepted.checked = false;
-            this.dispatchEvent(new CustomEvent('opt-out', {
+            this.dispatchEvent(new CustomEvent('opt-in', {
                 bubbles: true,
             }))
         });
