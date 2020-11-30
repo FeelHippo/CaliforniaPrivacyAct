@@ -7,14 +7,16 @@ import cmpConfiguration from '../../../cmp-configuration';
 import SibboCMP from '../../services/sibbo-cmp';
 import SibboI18n from '../../services/sibbo-i18n';
 import { setUSPData } from '../layout';
+import Storage from '../../storage/storage';
 import { addLogo } from '../layout';
 
 const template = document.createElement('template');
 
 export default class SibboCMPLayout extends HTMLElement {
     connectedCallback() {
+        // init component
         this._insertTemplate();
-
+        // add layouts and consent switch, logo
         this.appendChild(template.content.cloneNode(true));
         this._addConsentSwitcher();
         addLogo();
@@ -22,6 +24,9 @@ export default class SibboCMPLayout extends HTMLElement {
         // true == optin, false == optout
         let optInOut = new Boolean();
         
+        // read existing consent from local storage
+        this._existingConsent();
+        // event listeners
         this._setEventHandlers();
 
         if (this.style.display !== 'none') {
@@ -39,17 +44,6 @@ export default class SibboCMPLayout extends HTMLElement {
         return ['style']
     }
 
-    attributeChangedCallback(attribute, oldValue, newValue) {
-        if (attribute === 'style') {
-            if (newValue === 'display: none;') {
-                // this._removeEvents();
-            } else {
-                // this._addEvents();
-                // add focus tag event
-            }
-        }
-    }
-
     _insertTemplate() {
         const {t} = SibboI18n;
 
@@ -58,6 +52,7 @@ export default class SibboCMPLayout extends HTMLElement {
                 html({
                     mainText: t('layout.mainText'),
                     confirm: t('layout.confirm'),
+                    delete: t('layout.delete'),
                     saveAndExit: t('layout.saveAndExit'),
                     moreOptions: t('layout.moreOptions'),
                 })
@@ -76,6 +71,17 @@ export default class SibboCMPLayout extends HTMLElement {
                 </sibbo-cmp-consent-switcher>
             </section>
         `)
+    }
+
+    _existingConsent() {
+        const us_consent_string = Storage.getString(COOKIE_NAME);
+        const optOutSale = us_consent_string.split('')[2] === 'Y' ? true : false;
+        this.optInOut = optOutSale;
+
+        if (optOutSale) {
+            const confirmButton = document.querySelector('.sibbo-cmp-button');
+            confirmButton.classList.remove('sibbo-cmp-button--disabled');
+        }
     }
 
     _setEventHandlers() {

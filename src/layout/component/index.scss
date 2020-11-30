@@ -668,6 +668,7 @@
     }
   }
   .sibbo-opt-in-out {
+    width: 100%;
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -675,6 +676,10 @@
 
     padding: var(--sibbo-space) var(--sibbo-space-big) 0 0;
     margin: var(--sibbo-space-small) auto;
+    @media only screen and (max-width: 815px) {
+      padding: 0%;
+      
+    }
 
     div {
       font-weight: bolder;
@@ -785,7 +790,7 @@
     }
     &.sibbo-cmp-button--xl {
       font-size: 16px;
-      height: 52px;
+      height: 48px;
       line-height: 52px;
       padding: 0 var(--sibbo-space-small);
       @media only screen and (max-width: 815px) {

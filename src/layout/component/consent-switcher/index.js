@@ -6,16 +6,14 @@ const template = document.createElement('template');
 
 export default class SibboConsentSwitcher extends HTMLElement {
     connectedCallback() {
-        const initialValue = Storage.getString('sibbo-cmp-logo');
+        const us_consent_string = Storage.getString(COOKIE_NAME);
         this._insertTemplate();
         this.appendChild(template.content.cloneNode(true));
 
         this._setAttributes();
         
-        if (initialValue.length) {
-            let optInOut = initialValue.split('')[2];
-            optInOut = optInOut === 'Y' ? '1' : '0';
-            this._setDefaultValue(initialValue);
+        if (us_consent_string.length) {
+            this._setDefaultValue(us_consent_string);
         }
     }
 
@@ -72,8 +70,11 @@ export default class SibboConsentSwitcher extends HTMLElement {
     }
 
     _setDefaultValue(storedValue) {
-        const input = this.querySelector(`input[value="${storedValue}"]`);
+        let optOutOfSale = storedValue.split('')[2];
+        optOutOfSale = optOutOfSale === 'Y' ? '1' : '0';
+        const input = this.querySelector(`input[value="${optOutOfSale}"]`);
         if (input) {
+            console.log(input)
             input.checked = true;
         }
     }

@@ -4,5 +4,10 @@ export default {
     domain: "client.com",
     idSite: "",
     apiURL: "https://api.sibboventures.mgr.consensu.org/v2/consent",
-    isPublicherLSPA: false
+    isPublicherLSPA: false,
+    vendorDeleteScriptSources: [
+        'http://one',
+        'http://two',
+        'http://three',
+    ],
 }

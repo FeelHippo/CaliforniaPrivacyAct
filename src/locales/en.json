@@ -1,7 +1,7 @@
 {
     "layout": {
-        "deny": "Deny",
         "confirm": "Confirm",
+        "delete": "Delete my data",
         "saveAndExit": "Save and Exit",
         "moreOptions": "More Options",
         "mainText": "<h2> At <strong>client.com </strong> we care about your privacy </h2> <p> Our partners and us use cookies and identifiers with the purpose of storing and accessing information on your device to collect audience data, develop and improve products, as well as serve and measure ads and/or personalized content based on your browsing (e.g. pages visited). Some of these purposes include accurate geolocation and the analysis of device features to identify and distinguish users. </p> <p> Some companies require your consent and others are based on legitimate interest, but you can decide whether you accept it or not. <p> You can accept the use of cookies for this website or application by pressing the 'Accept' button or set/reject its use by clicking 'Configure / Reject'. You can modify your choice in Cookies Privacy Settings. More Info. <a href='https://www.client.com/privacy-policy' target='_blank'>Cookie policy.</a></p>"

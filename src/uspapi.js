@@ -61,12 +61,32 @@ const __handleUspapiMessage = event => {
         })
     }
 }
-// react to a call to window.postMessage()
+/**
+ * react to a call to window.postMessage()
+ */
 window.addEventListener('message', __handleUspapiMessage, false);
-
-// add the "__uspapiLocator" frame to the window
+/**
+ * Data Deletion Request Handling
+ */
+window.onload = () => {
+    cmpConfiguration.vendorDeleteScriptSources.forEach((vendorDeleteScriptSource) => {
+        const scriptElement = document.createElement('script');
+        scriptElement.src = vendorDeleteScriptSource;
+    
+        document.body.appendChild(scriptElement);
+    });
+    
+    function onCCPADelete() {
+        window.__uspapi('performDeletion', 1);
+    }
+    
+    const ccpaDeleteButton = document.getElementsByClassName('ccpa-delete')[0];
+    ccpaDeleteButton.addEventListener('click', onCCPADelete);
+}
+/**
+ * add the "__uspapiLocator" frame to the window
+ */
 addFrame();
-// add and initialize all components
 loadComponents();
 // delete this line in prodiction:
 SibboCMP.init(cmpConfiguration);
