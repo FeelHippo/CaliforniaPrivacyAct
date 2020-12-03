@@ -74,7 +74,6 @@ export default class SibboConsentSwitcher extends HTMLElement {
         optOutOfSale = optOutOfSale === 'Y' ? '1' : '0';
         const input = this.querySelector(`input[value="${optOutOfSale}"]`);
         if (input) {
-            console.log(input)
             input.checked = true;
         }
     }

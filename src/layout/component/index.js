@@ -22,7 +22,7 @@ export default class SibboCMPLayout extends HTMLElement {
         addLogo();
 
         // true == optin, false == optout
-        let optInOut = new Boolean();
+        let optInOut;
         
         // read existing consent from local storage
         this._existingConsent();
@@ -78,7 +78,7 @@ export default class SibboCMPLayout extends HTMLElement {
         const optOutSale = us_consent_string.split('')[2] === 'Y' ? true : false;
         this.optInOut = optOutSale;
 
-        if (optOutSale) {
+        if (us_consent_string.length) {
             const confirmButton = document.querySelector('.sibbo-cmp-button');
             confirmButton.classList.remove('sibbo-cmp-button--disabled');
         }
@@ -94,6 +94,7 @@ export default class SibboCMPLayout extends HTMLElement {
             })
             switcher.addEventListener('opt-in', () => {
                 this.optInOut = false;
+                document.querySelector('.sibbo-cmp-button').classList.remove('sibbo-cmp-button--disabled');
             })
         }
     }
